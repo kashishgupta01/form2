@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Validation Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Rye|Luckiest+Guy|Merienda" rel="stylesheet">
+    <style>
+        body{
+            background: url("https://i.imgur.com/fpabxIH.jpg");
+            background-blend-mode: hue;
+        }
+        fieldset{
+            margin-right: 50%;
+        } 
+        legend{
+            margin-left: 5%;
+            padding-left: 0%;
+            font-family: 'Rye', cursive;
+            font-size: 35px;
+        }
+        form{
+            padding-left: 10%;
+            font-family: 'Righteous', cursive;
+            font-size: 25px;
+        }
+        input{
+            font-size: 20px;
+        }
+        button{
+            font-size: 25px;
+            font-family: 'Luckiest Guy', cursive;
+            margin-left: 30%;
+        }
+    </style>
+    <script>
+            function ageFunc() {
+                var x, text;
+                x = document.getElementById("age").value;
+                if (isNaN(x) || x < 1 || x > 150) {
+                    alert("Input not valid");
+                } 
+            }
+            
+            function emailFunc() {
+                var x, text;
+                x=document.getElementById("email").value;
+                var atpos = x.indexOf("@");
+                var dotpos = x.lastIndexOf(".");
+                if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+                        alert("Not a valid e-mail address");
+                    return false;
+                }
+            }
+            function cpFunc(){
+                var x, y;
+                x=document.getElementById("p1").value;
+                y=document.getElementById("p2").value;
+                if(x==y)
+                    {
+                        alert("Passwords match");
+                    }
+                else{
+                    alert("Passwords do not match");
+                }
+            }
+</script>
+
+</head>
+
+<body>
+    <fieldset>
+        <legend>Please Enter Your Details</legend>   
+        <form name="v_form" method="post">
+            <br>
+            Name: <br><input type="text" name="name" required><br><br>
+            Password: <br><input type="password" name="pswd" required id="p1"><br><br>
+            Age: <br><input type="number" name="age" id="age" onblur="ageFunc()" ><br><br>
+            E-Mail ID: <br><input type="text" name="email" id="email" onblur="emailFunc()" required><br><br>
+            Address: <br><textarea name="address" rows="5" cols="25"></textarea><br><br>
+            Confirm Password: <br><input type="password" name="pswd" onblur="cpFunc()" required id="p2"><br><br>
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+        </fieldset>
+</body>
